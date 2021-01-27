@@ -4,8 +4,18 @@ import Vuex from "vuex";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  state: {},
-  mutations: {},
-  actions: {},
+  state: {
+    sidebarOpen: false
+  },
+  mutations: {
+    toggleSidebar(state) {
+      state.sidebarOpen = !state.sidebarOpen
+    }
+  },
+  actions: {
+    toggleSidebar(context) {
+      context.commit('toggleSidebar')
+    }
+  },
   modules: {}
 });
