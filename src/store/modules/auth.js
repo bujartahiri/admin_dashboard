@@ -28,7 +28,6 @@ export default {
       commit('AUTH_REQUEST')
         axios.post('http://159.89.102.6/api/admin/login', user)
           .then(res => {
-            console.log(res)
             const token = res.data.access_token
             localStorage.setItem('user-token', token)
             axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
@@ -38,6 +37,10 @@ export default {
             commit('AUTH_ERROR', error)
             localStorage.removeItem('user-token')
           })
+    },
+    LOGOUT() {
+      localStorage.removeItem('user-token')
+      delete axios.defaults.headers.common.['Authorization']
     }
   },
 
