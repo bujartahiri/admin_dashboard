@@ -4,7 +4,7 @@
 
       <Sidebar />
 
-      <div class="w-full bg-gray-100 pl-0 lg:pl-64 min-h-screen" id="main-content">
+      <div class="w-full bg-gray-100 pl-0 lg:pl-64 min-h-screen" :class="sideBarOpen ? 'overlay' : ''" id="main-content">
 
         <Navbar />
 
@@ -12,17 +12,22 @@
           <router-view />
         </div>
 
+        <Footer />
+
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import Sidebar from '@/components/Sidebar.vue'
-import Navbar from '@/components/Navbar.vue'
-
+import { mapState } from 'vuex'
+import Sidebar from './Sidebar'
+import Navbar from './Navbar'
 export default {
   name: 'Dashboard',
+  computed: {
+    ...mapState(['sideBarOpen'])
+  },
   components: {
     Sidebar,
     Navbar
