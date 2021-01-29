@@ -1,5 +1,7 @@
 # admin_dashboard
 
+Has the live demo but right now api requests dont work because they are made through HTTP requests and firebase(where demo is deployed) serves only HTTPS content.
+
 ## Project setup
 ```
 npm install
