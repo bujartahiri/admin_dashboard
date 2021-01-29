@@ -2,6 +2,8 @@
 
 Has the live demo but right now api requests dont work because they are made through HTTP requests and firebase(where demo is deployed) serves only HTTPS content.
 
+Demo: https://admin-53d12.web.app/login
+
 ## Project setup
 ```
 npm install
