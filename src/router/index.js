@@ -21,7 +21,7 @@ const routes = [
       {
         path: "add-category",
         name: "AddCategory",
-        component:() => import("../views/Home.vue")
+        component:() => import("../views/AddCategory.vue")
       },
 
     ]
@@ -41,7 +41,8 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   const loggedIn = auth.state.token
-    if (to.matched.some(record => record.meta.requiresAuth) && !loggedIn) {
+  const token = true
+    if (to.matched.some(record => record.meta.requiresAuth) && !token) {
       next({ name: "Login" });
     } else if (loggedIn && to.path == "/login") {
       next(from.fullPath);
