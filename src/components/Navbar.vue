@@ -62,10 +62,7 @@ export default {
             this.$store.dispatch('toggleSidebar')
         },
         logout() {
-          this.$store.dispatch('LOGOUT')
-            .then(() => {
-              this.$router.push('/login')
-            })
+          this.$store.dispatch('LOGOUT')          
         }
     }
 }

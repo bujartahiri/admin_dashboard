@@ -1,7 +1,7 @@
 import axios from 'axios'
 export default {
   state: {
-    token: localStorage.getItem('user-token') || '',
+    token: localStorage.getItem('user-token') || null,
     status: '',
   },
 
@@ -41,6 +41,7 @@ export default {
     LOGOUT() {
       localStorage.removeItem('user-token')
       delete axios.defaults.headers.common.['Authorization']
+      location.reload()
     }
   },
 

@@ -9,7 +9,7 @@
         <Navbar />
 
         <div class="p-6 bg-gray-100 mb-20">
-          <router-view />
+          <router-view :key="$route.fullPath" />
         </div>
 
         <Footer />
@@ -24,7 +24,7 @@ import { mapState } from 'vuex'
 import Sidebar from './Sidebar'
 import Navbar from './Navbar'
 export default {
-  name: 'Dashboard',
+  name: 'Layout',
   computed: {
     ...mapState(['sideBarOpen'])
   },

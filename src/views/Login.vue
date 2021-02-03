@@ -38,9 +38,7 @@
     methods: {
       login() {
         this.$store.dispatch('AUTH_REQUEST', { email: this.email, password: this.password })
-          .then(() => {
-            this.$router.push('/')
-          })
+          .then(() => this.$router.push({name: 'Home'}))
       }
     }
   }
