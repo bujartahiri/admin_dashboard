@@ -9,7 +9,9 @@
         <Navbar />
 
         <div class="p-6 bg-gray-100 mb-20">
-          <router-view :key="$route.fullPath" />
+          <transition name="slide" mode="out-in">
+            <router-view :key="$route.path" />
+          </transition>
         </div>
 
         <Footer />
@@ -34,3 +36,15 @@ export default {
   }
 }
 </script>
+
+<style>
+  .slide-enter-active,
+  .slide-leave-active {
+    transition: opacity 250ms, transform 250ms;
+  }
+  .slide-enter,
+  .slide-leave-to {
+    opacity: 0;
+    transform: translateX(-10%);
+  }
+</style>

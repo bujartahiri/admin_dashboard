@@ -17,7 +17,13 @@ const routes = [
         path: "dashboard",
         name: "Home",
         component:() => import("../views/Home.vue")
-      }
+      },
+      {
+        path: "add-category",
+        name: "AddCategory",
+        component:() => import("../views/Home.vue")
+      },
+
     ]
   },
   {
