@@ -5,8 +5,10 @@ import router from "./router";
 import store from "./store";
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+import Modal from './components/Modal'
 
 Vue.use(VueAxios, axios)
+Vue.component("modal", Modal);
 
 Vue.config.productionTip = false;
 
