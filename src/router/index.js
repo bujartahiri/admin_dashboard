@@ -1,7 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Layout from '../components/Layout'
-import auth from '../store/modules/auth'
+// import auth from '../store/modules/auth'
 
 Vue.use(VueRouter);
 
@@ -19,9 +19,24 @@ const routes = [
         component:() => import("../views/Home.vue")
       },
       {
-        path: "add-category",
-        name: "AddCategory",
-        component:() => import("../views/AddCategory.vue")
+        path: "add-company",
+        name: "AddCompany",
+        component:() => import("../views/AddCompany.vue")
+      },
+      {
+        path: "view-companies",
+        name: "ViewCompanies",
+        component:() => import("../views/ViewCompanies.vue")
+      },
+      {
+        path: "add-employee",
+        name: "AddEmployee",
+        component:() => import("../views/AddEmployee.vue")
+      },
+      {
+        path: "view-emplyees",
+        name: "ViewEmployees",
+        component:() => import("../views/ViewEmployees.vue")
       },
 
     ]
@@ -39,15 +54,15 @@ const router = new VueRouter({
   routes
 });
 
-router.beforeEach((to, from, next) => {
-  const loggedIn = auth.state.token
-  const token = true
-    if (to.matched.some(record => record.meta.requiresAuth) && !token) {
-      next({ name: "Login" });
-    } else if (loggedIn && to.path == "/login") {
-      next(from.fullPath);
-    }
-    next()
-});
+// router.beforeEach((to, from, next) => {
+//     const loggedIn = auth.state.token
+//     if (to.matched.some(record => record.meta.requiresAuth) && !loggedIn) {
+//       next({ name: "Login" });
+//     } else if (token && to.path == "/login") {
+//       next(from.fullPath);
+//     } else {
+//       next()
+//     }
+// });
 
 export default router;

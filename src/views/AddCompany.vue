@@ -10,7 +10,7 @@
 
 <script>
   export default {
-    name: 'AddCategory'
+    name: 'AddCompany'
   }
 </script>
 
