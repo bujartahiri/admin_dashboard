@@ -31,8 +31,8 @@
             </td>
             <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
                 <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Actions</span>
-                <a href="#" @click="showModal = true" class="mr-4 bg-transparent hover:bg-blue-400 text-blue-600 font-semibold hover:text-white px-4 border border-blue-400 hover:border-transparent rounded">Edit</a>
-                <a href="#" class="hover:bg-red-400 text-red-600 font-semibold hover:text-white px-4 border border-red-400 hover:border-transparent rounded">Remove</a>
+                <a href="#" @click="edit" class="mr-4 bg-transparent hover:bg-blue-400 text-blue-600 font-semibold hover:text-white px-4 border border-blue-400 hover:border-transparent rounded">Edit</a>
+                <a href="#" @click="remove" class="hover:bg-red-400 text-red-600 font-semibold hover:text-white px-4 border border-red-400 hover:border-transparent rounded">Remove</a>
             </td>
         </tr>
         
@@ -41,10 +41,22 @@
 
     <modal v-if="showModal" @close="showModal = false">
        <template v-slot:header>
-          <h3 class="text-xl">test header</h3>
+          <div v-if="editContent">
+            <h3>Edit</h3>
+          </div>
+          <div v-if="deleteContent">
+            <h3>Delete</h3>
+          </div>
        </template>
        <template v-slot:body>
-          <h3 class="text-xl">test body</h3>
+          <div>
+            <div v-if="editContent">
+            <h3>Body content</h3>
+          </div>
+            <div v-if="deleteContent">
+              <h3>Are you sure?</h3>
+            </div>
+          </div>
        </template>
        <template v-slot:footer>
           <div class="flex justify-end">
@@ -62,10 +74,23 @@
     name: 'ViewCompanies',
 		data() {
       return {
-        showModal: true
+        showModal: false,
+        deleteContent: false,
+        editContent: false
       }
     },
 		methods: {
+      remove() {
+        this.showModal = true
+        this.deleteContent = true
+        this.editContent = false
+      },
+      edit() {
+        this.showModal = true
+        this.editContent = true
+        this.deleteContent = false
+      },
+
 		}
 	};
 </script>
