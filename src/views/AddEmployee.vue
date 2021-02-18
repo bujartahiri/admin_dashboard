@@ -22,7 +22,14 @@
             </div>
             <div class="flex flex-col">
               <label class="leading-loose">Company</label>
-              <input type="text" class="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600" placeholder="Optional">
+              <label class="block">
+                <select class="user-select w-full px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600">
+                  <option>Company 1</option>
+                  <option>Company 2</option>
+                  <option>Company 3</option>
+                  <option>Company 4</option>
+                </select>
+              </label>
             </div>
 
             <div class="flex flex-col">
@@ -53,6 +60,6 @@
   }
 </script>
 
-<style lang="scss" scoped>
+<style  scoped>
 
 </style>

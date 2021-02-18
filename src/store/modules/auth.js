@@ -1,4 +1,5 @@
 import axios from 'axios'
+import url from './base_url'
 export default {
   state: {
     token: localStorage.getItem('user-token') || null,
@@ -26,12 +27,15 @@ export default {
   actions: {
     AUTH_REQUEST({ commit }, user) {
       commit('AUTH_REQUEST')
-        axios.post('http://159.89.102.6/api/admin/login', user)
+        axios.post(`${url.BASE_URL}/login`, user)
           .then(res => {
             const token = res.data.access_token
             localStorage.setItem('user-token', token)
             axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
             commit('AUTH_SUCCESS', token)
+          })
+          .then(() => {
+            location.reload()
           })
           .catch(error => {
             commit('AUTH_ERROR', error)
