@@ -7,9 +7,15 @@ export default {
   },
 
   getters: {
-    //
+    getCompanies(state) {
+      return state.companies
+    }
   },
-
+  mutations: {
+    SET_COMPANIES(state, payload) {
+      state.companies = payload
+    }
+  },
   actions: {
     CREATE_COMPANY(_, credentials) {
       axios.post(`${url.BASE_URL}/companies`, credentials)
@@ -18,6 +24,12 @@ export default {
         })
         .catch(error => {
           console.error(error)
+        })
+    },
+    GET_COMPANIES({commit}) {
+      axios.get(`${url.BASE_URL}/companies`)
+        .then(res => {
+          commit('SET_COMPANIES', res.data)
         })
     }
   },

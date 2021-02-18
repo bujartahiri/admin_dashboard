@@ -12,22 +12,21 @@
         </tr>
     </thead>
     <tbody>
-        <tr class="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0">
+        <tr 
+          class="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0"
+          v-for="company in getCompanies.rows" :key="company.id"
+        >
             <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
-                <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Company name</span>
-				ghome
+				        {{company.name}}
             </td>
-            <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
-                <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Country</span>
-                Switzerland
+            <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+				        {{company.email}}
             </td>
-            <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
-                <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Status</span>
-                <span class="rounded bg-yellow-400 py-1 px-3 text-xs font-bold">inactive</span>
+            <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+				        {{company.logo}}
             </td>
-            <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
-                <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Status</span>
-                <span class="rounded bg-yellow-400 py-1 px-3 text-xs font-bold">inactive</span>
+            <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+				        {{company.website}}
             </td>
             <td class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
                 <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Actions</span>
@@ -69,7 +68,7 @@
 </template>
 
 <script>
-
+  import { mapGetters } from 'vuex'
   export default {
     name: 'ViewCompanies',
 		data() {
@@ -78,6 +77,15 @@
         deleteContent: false,
         editContent: false
       }
+    },
+    computed: {
+      ...mapGetters([
+        'getCompanies'
+      ])
+    },
+    mounted() {
+        this.$store.dispatch('GET_COMPANIES')
+        console.log(this.getCompanies)
     },
 		methods: {
       remove() {

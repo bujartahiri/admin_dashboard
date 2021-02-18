@@ -1,3 +1,3 @@
 module.exports = {
-  BASE_URL: `http://ba1e0fbe3f2c.ngrok.io/Clean-Laravel-Api/public`
+  BASE_URL: `http://11c9270496bd.ngrok.io/Clean-Laravel-Api/public`
 }
